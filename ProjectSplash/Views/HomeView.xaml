@@ -2,11 +2,99 @@
     x:Class="ProjectSplash.Views.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:WinUIControls="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProjectSplash.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomeViewModel}"
     mc:Ignorable="d">
 
-    <Grid />
+    <Page.Resources>
+        <Style x:Key="PivotItemHeaderToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+        </Style>
+    </Page.Resources>
+    <Grid Background="{StaticResource PrimaryBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Padding="10"
+            Background="{ThemeResource SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <ToggleButton Content="PHOTO OF DAY" Style="{StaticResource PivotItemHeaderToggleButtonStyle}" />
+                <ToggleButton Content="LATEST" Style="{StaticResource PivotItemHeaderToggleButtonStyle}" />
+                <ToggleButton Content="POPULAR" Style="{StaticResource PivotItemHeaderToggleButtonStyle}" />
+                <ToggleButton Content="COLLECTIONS" Style="{StaticResource PivotItemHeaderToggleButtonStyle}" />
+                <ToggleButton Content="EXPLORE" Style="{StaticResource PivotItemHeaderToggleButtonStyle}" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <AutoSuggestBox
+                    MinWidth="300"
+                    PlaceholderText="Search photo"
+                    QueryIcon="Find" />
+                <Button
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Stretch"
+                    Content="&#xE118;"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}" />
+                <Button
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Stretch"
+                    Content="&#xE115;"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}" />
+                <WinUIControls:DropDownButton
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Stretch"
+                    Content="more">
+                    <WinUIControls:DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Statistics" />
+                            <MenuFlyoutItem Text="Feedback" />
+                            <MenuFlyoutItem Text="About" />
+                        </MenuFlyout>
+                    </WinUIControls:DropDownButton.Flyout>
+                </WinUIControls:DropDownButton>
+            </StackPanel>
+        </Grid>
+        <Pivot Grid.Row="1">
+            <PivotItem>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="PHOTO OF DAY" />
+            </PivotItem>
+            <PivotItem>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="LATEST" />
+            </PivotItem>
+            <PivotItem>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="PPOPULAR" />
+            </PivotItem>
+            <PivotItem>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="COLLECTIONS" />
+            </PivotItem>
+            <PivotItem>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="EXPLORE" />
+            </PivotItem>
+        </Pivot>
+    </Grid>
 </Page>

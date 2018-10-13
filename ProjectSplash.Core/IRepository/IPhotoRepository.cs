@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ProjectSplash.Core.IRepository
 {
     public interface IPhotoRepository
-    {
+    { 
         /// <summary>
         /// Retrieve list of photos
         /// </summary>
